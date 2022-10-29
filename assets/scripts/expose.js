@@ -4,13 +4,20 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() 
 {
-  const hornFrame = document.querySelector("img[alt='No image selected']")
+  const hornFrame = document.querySelector("img[alt='No image selected']");
+  const hornSound = document.querySelector("audio.hidden");
 
   const dropdown = document.getElementById("horn-select");
-  dropdown.addEventListener('change', setHornByChoice);
-
-  function setHornByChoice(choice)
+  dropdown.addEventListener('change', function() 
   {
-    hornFrame.src = "${choice.value}.svg";
-  }
+    //alert(this.value);
+    hornFrame.src = `/assets/images/${this.value}.svg`;
+    hornSound.src = `/assets/audio/${this.value}.mp3`;
+  });
+
+  const play = document.querySelector("button");
+  play.addEventListener('click', function()
+  {
+    hornSound.play();
+  });
 }
