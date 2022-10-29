@@ -13,8 +13,8 @@ function init()
   dropdown.addEventListener('change', function() 
   {
     //alert(this.value);
-    hornFrame.src = `/assets/images/${this.value}.svg`;
-    hornSound.src = `/assets/audio/${this.value}.mp3`;
+    hornFrame.src = `./assets/images/${this.value}.svg`;
+    hornSound.src = `./assets/audio/${this.value}.mp3`;
   });
 
   const play = document.querySelector("button");
