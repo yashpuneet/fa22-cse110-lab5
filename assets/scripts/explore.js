@@ -4,7 +4,8 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
   const voicesDropdown = document.getElementById("voice-select");
-  
+  const face = document.querySelector("img[alt='Smiling face']");
+
   const speaker = window.speechSynthesis;
   let voices = [];
   setTimeout(() => {
@@ -22,10 +23,20 @@ function init() {
 
   const textCapture = document.getElementById("text-to-speak");
 
+  let sentence = new SpeechSynthesisUtterance(textCapture.value);
+  sentence.addEventListener('start', function()
+  {
+    face.src = './assets/images/smiling-open.png';
+  });
+  sentence.addEventListener('end', function()
+  {
+    face.src = './assets/images/smiling.png';
+  });
+
   const speak = document.querySelector("button");
   speak.addEventListener('click', function()
   {
-    let sentence = new SpeechSynthesisUtterance(textCapture.value);
+    sentence.text = (textCapture.value);
     sentence.voice = voices[voicesDropdown.value];
     speaker.speak(sentence);
   });
