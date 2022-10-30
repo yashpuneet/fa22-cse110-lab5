@@ -25,7 +25,9 @@ function init() {
   const speak = document.querySelector("button");
   speak.addEventListener('click', function()
   {
-    //alert(textCapture.value);
+    let sentence = new SpeechSynthesisUtterance(textCapture.value);
+    sentence.voice = voices[voicesDropdown.value];
+    speaker.speak(sentence);
   });
 
 }
